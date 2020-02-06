@@ -24,12 +24,13 @@ public final class Constants {
     
 		public static final int PISTONIN = 0; // piston for wof deployment 
     public static final int PISTONOUT = 1;
+
     public static final RawColor RED = new RawColor(255, 0, 0, 0);
     public static final RawColor GREEN = new RawColor(0, 255, 0, 0);
     public static final RawColor BLUE = new RawColor(0, 255, 255, 0);
     public static final RawColor YELLOW = new RawColor(255, 255, 0, 0);
 
-    public static final RawColor[] wheelColors ={
+    public static final RawColor[] wheelColors ={ // the colors on the WOF in order 
       RED, // red
       GREEN, // green
       BLUE, // blue
@@ -41,6 +42,28 @@ public final class Constants {
     }
 
     public static final class DriveConstants {
+
+    // motors
+		public static final int LEFT_MOTOR1_PORT = 1; // currently set up for protobot ports 
+    public static final int LEFT_MOTOR2_PORT = 2;
+    
+		public static final int RIGHT_MOTOR1_PORT = 3;
+    public static final int RIGHT_MOTOR2_PORT = 4;
+
+    // encoders
+    public static final int[] LEFT_ENCODERS = new int[]{0, 1};
+    public static final int[] RIGHT_ENCODERS = new int[]{2, 3};
+
+    public static final boolean LEFT_ENCODERS_REVERSE = false;
+    public static final boolean RIGHT_ENCODERS_REVERSE = true;
+    
+    // math garbage
+    public static final double ENCODER_COUNT_PER_ROTATION = 360; // number of pulses per full rotation 
+    public static final int WHEEL_DIAMETER = 6; // size of the wheels 
+    public static final double kEncoderDistancePerPulse =
+    // Assumes the encoders are directly mounted on the wheel shafts
+    (WHEEL_DIAMETER * Math.PI) / (double) ENCODER_COUNT_PER_ROTATION;
+
 
     }
 

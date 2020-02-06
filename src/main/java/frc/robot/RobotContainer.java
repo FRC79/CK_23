@@ -8,15 +8,20 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj2.command.Command;
+//import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.wheel_of_fortune.ExtendWOF;
+import frc.robot.commands.wheel_of_fortune.RetractWOF;
+import frc.robot.commands.wheel_of_fortune.SpinWOF;
+import frc.robot.commands.wheel_of_fortune.WOFHoldOnColor;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.WheelOfFortune;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -31,10 +36,13 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   private final WheelOfFortune m_WheelOfFortune = new WheelOfFortune();
+  //private final DriveTrain m_DriveTrain = new DriveTrain();
+
+  SendableChooser<Command> m_chooser = new SendableChooser<>(); // allows the drivers to choose auto mode in driver station.
 
   // joysticks
-  private Joystick driver = new Joystick(Constants.OIConstants.DRIVER);
-  private Joystick operator = new Joystick(Constants.OIConstants.OPERATOR);
+  public Joystick driver = new Joystick(Constants.OIConstants.DRIVER);
+  public Joystick operator = new Joystick(Constants.OIConstants.OPERATOR);
 
 
   /**
@@ -43,6 +51,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    new DriveTrain();
   }
 
   /**
@@ -56,10 +65,14 @@ public class RobotContainer {
 
     // operatior buttons
       // WOF
-      JoystickButton extendWOF = new JoystickButton(operator, Constants.OIConstants.EXTEND_WOF);
-      JoystickButton retractWOF = new JoystickButton(operator, Constants.OIConstants.RETRACT_WOF);
-      JoystickButton spinWOF = new JoystickButton(operator, Constants.OIConstants.SPIN_WOF);
-      JoystickButton holdWOF = new JoystickButton(operator, Constants.OIConstants.HOLD_WOF);
+      new JoystickButton(operator, Constants.OIConstants.EXTEND_WOF)
+        .whenPressed(new ExtendWOF(m_WheelOfFortune));
+      new JoystickButton(operator, Constants.OIConstants.RETRACT_WOF)
+        .whenPressed(new RetractWOF(m_WheelOfFortune));
+      new JoystickButton(operator, Constants.OIConstants.SPIN_WOF)
+        .whenPressed(new SpinWOF(m_WheelOfFortune));
+      new JoystickButton(operator, Constants.OIConstants.HOLD_WOF)
+        .whenPressed(new WOFHoldOnColor(m_WheelOfFortune));
   }
 
 

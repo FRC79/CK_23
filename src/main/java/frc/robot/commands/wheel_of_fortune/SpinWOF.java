@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.WOF;
+package frc.robot.commands.wheel_of_fortune;
 
 import com.revrobotics.ColorSensorV3.RawColor;
 
