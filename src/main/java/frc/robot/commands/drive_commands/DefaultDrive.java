@@ -7,6 +7,7 @@
 
 package frc.robot.commands.drive_commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.RobotContainer;
@@ -15,6 +16,7 @@ public class DefaultDrive extends CommandBase {
 
   private final DriveTrain m_DriveTrain;
   private final RobotContainer m_RobotContainer;
+  private Joystick m_stick;
 
   /**
    * Creates a new DefaultDrive.
@@ -30,15 +32,16 @@ public class DefaultDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_stick = m_RobotContainer.driver;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double forward = -1.0  * m_RobotContainer.driver.getY(); //gets joystick values to move forward and back
-    //"-" makes forward	go forward on the joystick
-    double turn =  1.0 * m_RobotContainer.driver.getX();    //turns left and right
-    m_DriveTrain.arcadeDrive(forward, turn); //passes joystick values into drive mechanism
+    System.out.print(" defaut drive exicute ");
+    double forward = -1 * m_stick.getY();
+		double turn = m_stick.getX();	
+    m_DriveTrain.arcadeDrive(forward, turn);
   }
 
   // Called once the command ends or is interrupted.

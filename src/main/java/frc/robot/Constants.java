@@ -20,7 +20,7 @@ import com.revrobotics.ColorSensorV3.RawColor;
 public final class Constants {
     public static final class WOFConstants {
 
-    public static final int WOFMOTOR = 420; // WOF motor (victor)
+    public static final int WOFMOTOR = 16; // WOF motor (victor)
     
 		public static final int PISTONIN = 0; // piston for wof deployment 
     public static final int PISTONOUT = 1;
@@ -45,9 +45,9 @@ public final class Constants {
 
     // motors
 		public static final int LEFT_MOTOR1_PORT = 1; // currently set up for protobot ports 
-    public static final int LEFT_MOTOR2_PORT = 2;
+    public static final int LEFT_MOTOR2_PORT = 3;
     
-		public static final int RIGHT_MOTOR1_PORT = 3;
+		public static final int RIGHT_MOTOR1_PORT = 2;
     public static final int RIGHT_MOTOR2_PORT = 4;
 
     // encoders
@@ -78,10 +78,10 @@ public final class Constants {
 
     // operatior buttons 
       // WOF
-      public static final int EXTEND_WOF = 0; // push up
-      public static final int RETRACT_WOF = 0; // pull down
-      public static final int SPIN_WOF = 0; // spin 3 times
-      public static final int HOLD_WOF = 0; // hold on color
+      public static final int EXTEND_WOF = 1; // push up
+      public static final int RETRACT_WOF = 2; // pull down
+      public static final int SPIN_WOF = 3; // spin 3 times
+      public static final int HOLD_WOF = 4; // hold on color
 
     }
 }

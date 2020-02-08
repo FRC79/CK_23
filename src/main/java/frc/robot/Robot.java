@@ -8,8 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.commands.drive_commands.DefaultDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,12 +26,16 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  private final DriveTrain m_DriveTrain = new DriveTrain();
+  private Command m_defaultDrive;
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   @Override
   public void robotInit() {
+    LiveWindow.disableAllTelemetry();
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
@@ -86,6 +94,10 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    m_defaultDrive = new DefaultDrive(m_DriveTrain, m_robotContainer);
+    System.out.print("robot init");
+    m_defaultDrive.schedule();
+    
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
