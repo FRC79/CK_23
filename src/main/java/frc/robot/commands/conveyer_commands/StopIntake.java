@@ -5,48 +5,34 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.drive_commands;
+package frc.robot.commands.conveyer_commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.RobotContainer;
 
-public class DefaultDrive extends CommandBase {
+import frc.robot.subsystems.BallConveyer;
 
-  private final DriveTrain m_DriveTrain;
-  private final RobotContainer m_RobotContainer;
-  private Joystick m_stick;
-
+public class StopIntake extends CommandBase {
+  private final BallConveyer m_BallConveyer;
   /**
-   * Creates a new DefaultDrive.
+   * Creates a new DumpBalls.
    */
-  public DefaultDrive(DriveTrain subsystem, RobotContainer roboContainer) {
+  public StopIntake(BallConveyer ballConveyer) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_RobotContainer = roboContainer;
-    m_DriveTrain = subsystem;
-    addRequirements(m_DriveTrain);
-
+    m_BallConveyer = ballConveyer;
+    addRequirements(m_BallConveyer);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_stick = m_RobotContainer.driver;
+    m_BallConveyer.setIntakeMotors(0);
+    m_BallConveyer.setClipMotors(0);
+    m_BallConveyer.setDumpMotors(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.print(" defaut drive exicute ");
-    double forward = -1 * m_stick.getY();
-    double turn = m_stick.getX();	
-    // distance
-    // velocity
-    double timeTillImpact = -1;
-    double computeFwd = 0.2; // time till impact * some constant
-    double fwd = Math.min(computeFwd, forward);
-    m_DriveTrain.arcadeDrive(fwd, turn);
   }
 
   // Called once the command ends or is interrupted.
@@ -57,6 +43,6 @@ public class DefaultDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

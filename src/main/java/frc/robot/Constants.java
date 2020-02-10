@@ -75,6 +75,12 @@ public final class Constants {
 
     
     // driver buttons
+      // ball conveyer
+      public static final int INTAKE_ON = 0;
+      public static final int INTAKE_OFF = 0;
+
+      public static final int DUMP_ON = 0;
+      public static final int DUMP_OFF = 0;
 
     // operatior buttons 
       // WOF
@@ -82,6 +88,19 @@ public final class Constants {
       public static final int RETRACT_WOF = 2; // pull down
       public static final int SPIN_WOF = 3; // spin 3 times
       public static final int HOLD_WOF = 4; // hold on color
+
+
+    }
+    public static final class ConveyerConstants{
+
+		public static final int INTAKE_LEFT = 0;
+    public static final int INTAKE_RIGHT = 0;
+    
+		public static final int CLIP_LEFT = 0;
+    public static final int CLIP_RIGHT = 0;
+    
+		public static final int DUMP_LEFT = 0;
+		public static final int DUMP_RIGHT = 0;
 
     }
 }

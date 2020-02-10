@@ -15,6 +15,7 @@ import frc.robot.Constants.DriveConstants;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 public class DriveTrain extends SubsystemBase {
   // The motors on the left side of the drive.
@@ -24,6 +25,10 @@ public class DriveTrain extends SubsystemBase {
   // The motors on the right side of the drive.
   private final TalonSRX frontRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR1_PORT);
   private final TalonSRX backRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR2_PORT);
+
+  // ultrasonic sensors
+
+  // encoders
 
   /**
    * Creates a new DriveTrain.
@@ -38,11 +43,11 @@ public class DriveTrain extends SubsystemBase {
 		double turn = Deadband(rot);
 
 		/* Arcade Drive using PercentOutput along with Arbitrary Feed Forward supplied by turn */
-    frontLeftMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, +turn);
-    backLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, +turn);
+    frontLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn);
+    backLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn);
     
-    frontRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, +turn);
-    backRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, +turn);
+    frontRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, turn);
+    backRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, turn);
   }
   double Deadband(double value) {
 		/* Upper deadband */
