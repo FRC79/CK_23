@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
+import edu.wpi.first.wpilibj.AnalogInput; // for USS
 
 // import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -27,7 +28,8 @@ public class DriveTrain extends SubsystemBase {
   private final TalonSRX backRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR2_PORT);
 
   // ultrasonic sensors
-
+  private final AnalogInput m_US = new AnalogInput(DriveConstants.USS_PORT);
+	
   // encoders
 
   /**
@@ -35,7 +37,16 @@ public class DriveTrain extends SubsystemBase {
    */
   public DriveTrain() {
   }
-  
+	 
+  // USS reads between 25cm - 765cm   
+  // https://www.andymark.com/products/ultrasonic-proximity-sensor-ez0-mb1200-maxbotix
+  public double GetDistance() {
+    double sensorValue = m_US.getVoltage();
+    final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
+    double distance = 5*sensorValue*scaleFactor; //convert the voltage to distance
+    return distance; 
+  }
+	
   public void arcadeDrive(double fwd, double rot) {
     System.out.print("arcade drive");
     /* Gamepad processing */
