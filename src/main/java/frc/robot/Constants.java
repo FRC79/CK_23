@@ -64,7 +64,8 @@ public final class Constants {
     // Assumes the encoders are directly mounted on the wheel shafts
     (WHEEL_DIAMETER * Math.PI) / (double) ENCODER_COUNT_PER_ROTATION;
 
-
+    // ultrasonic sensors
+     public static final int USS_PORT = 0; // 0 needs to be changed
     }
 
     public static final class OIConstants {
