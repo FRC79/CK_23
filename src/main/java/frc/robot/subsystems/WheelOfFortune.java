@@ -33,6 +33,10 @@ public class WheelOfFortune extends SubsystemBase {
     colorSensor = new ColorSensorV3(i2cPort);
   }
 
+  public void config(){ // configure the color sensor
+    //colorSensor.configureColorSensor(5, 69, 10);
+  }
+
   public void retract() {    // retract piston
     WOFPiston.set(DoubleSolenoid.Value.kReverse);
   }

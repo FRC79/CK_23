@@ -7,16 +7,16 @@
 
 package frc.robot.commands.wheel_of_fortune;
 
-import com.revrobotics.ColorSensorV3.RawColor;
-
+import edu.wpi.first.wpilibj.util.Color;
 /**
  * Add your docs here.
  */
 public class WOFHelpers {
 
-    public static double aproximateColor(RawColor color1, RawColor color2){ // just returns the euclidean distance between a given color and the sensor's color
+    public static double aproximateColor(Color color1, Color color2){ // just returns the euclidean distance between a given color and the sensor's color
 
-    double distS1 = Math.pow( color1.red - color2.red,2)+Math.pow( color1.blue - color2.blue,2)+Math.pow( color1.green - color2.green,2);
+    // we multiply the diff in red so that we can tell similar RGBs like red and yellow apart
+    double distS1 = (Math.pow( color1.red - color2.red,2)*10)+Math.pow( color1.blue - color2.blue,2)+Math.pow( color1.green - color2.green,2);
     double distS2 = Math.sqrt(distS1);
 
     return distS2;

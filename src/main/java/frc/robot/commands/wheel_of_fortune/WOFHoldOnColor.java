@@ -6,10 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands.wheel_of_fortune;
-import com.revrobotics.ColorSensorV3.RawColor;
 
 import edu.wpi.first.wpilibj.DriverStation;
-
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.WheelOfFortune;
@@ -76,8 +75,8 @@ public class WOFHoldOnColor extends CommandBase {
       // do nothing
       return;
     }
-    RawColor rightSensorColor = Constants.WOFConstants.wheelColors[colorIndex];
-    RawColor sensorColor = m_WheelOfFortune.colorSensor.getRawColor(); // to set this to the output of the sensor
+    Color rightSensorColor = Constants.WOFConstants.wheelColors[colorIndex];
+    Color sensorColor = m_WheelOfFortune.colorSensor.getColor(); // to set this to the output of the sensor
 
     isOnRightColor = WOFHelpers.aproximateColor(rightSensorColor, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD;
     if(isOnRightColor){

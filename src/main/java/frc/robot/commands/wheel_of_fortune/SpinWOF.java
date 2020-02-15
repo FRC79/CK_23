@@ -7,9 +7,8 @@
 
 package frc.robot.commands.wheel_of_fortune;
 
-import com.revrobotics.ColorSensorV3.RawColor;
-
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.WheelOfFortune;
@@ -17,22 +16,41 @@ import frc.robot.subsystems.WheelOfFortune;
 public class SpinWOF extends CommandBase {
   
   private final WheelOfFortune m_WheelOfFortune;
-  private RawColor sensorColor;
+  private Color sensorColor;
   private int rotations;
+  private SmartDashboard m_dash;
+  private Boolean temp;
 
+
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {
+    m_WheelOfFortune.WOFmotor.set(0.5);     // spin up the WOF motor to 50%
+    temp = false;
+    rotations = 0;
+  }
 
   public void colorChange(){// count the number of times we switch TO yellow.
-    RawColor yellow = Constants.WOFConstants.YELLOW; // 
+    Color blue = Constants.WOFConstants.BLUE; // 
 
-    boolean isYellow = WOFHelpers.aproximateColor(yellow, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD; // if the color sensor is close to pure yellow
+    m_dash.putNumber("aprob red", sensorColor.red);
+    m_dash.putNumber("aprob green", sensorColor.green);
+    m_dash.putNumber("aprob blue", sensorColor.blue);
+    m_dash.putNumber("color diff", WOFHelpers.aproximateColor(blue, sensorColor));
+    
 
-    boolean temp = false; 
-    if(isYellow != temp){ // switch temp back and forth, counting up one each time.
-      if(isYellow){
+    boolean isBlue = WOFHelpers.aproximateColor(blue, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD; // if the color sensor is close to pure yellow
+
+    
+
+    if(isBlue != temp){ // switch temp back and forth, counting up one each time.
+      if(isBlue){
         rotations += 1;
       }
-      temp = isYellow;
+      temp = isBlue;
     } 
+    m_dash.putNumber("Rotations", rotations);
+    m_dash.putBoolean("isBlue", isBlue);
   }
 
   /**
@@ -44,18 +62,10 @@ public class SpinWOF extends CommandBase {
   }
 
 
-
-
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-    m_WheelOfFortune.WOFmotor.set(0.5);     // spin up the WOF motor to 50%
-  }
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sensorColor = m_WheelOfFortune.colorSensor.getRawColor(); // to set this to the output of the sensor
+    sensorColor = m_WheelOfFortune.colorSensor.getColor(); // to set this to the output of the sensor
     colorChange();
   }
 
