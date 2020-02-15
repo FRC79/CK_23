@@ -90,6 +90,12 @@ public final class Constants {
         public static final int SPIN_WOF = 3; // spin 3 times
         public static final int HOLD_WOF = 4; // hold on color
 
+        // climb 
+        public static final int EXTEND_TELESCOPE = 5; // send the telescopes up
+        public static final int STOP_TELESCOPE = 5; // stop the telescopes
+        public static final int CLIMB_UP = 7; // start the winch
+        public static final int STOP_WINCH = 7; // stop the winch
+
 
     }
     public static final class ConveyerConstants{
@@ -112,8 +118,6 @@ public final class Constants {
     
 		public static final int WINCH_1 = 0; // motor for the winch
 		public static final int WINCH_2 = 0; // 2nd winch motor
-
-
 
     }
 }

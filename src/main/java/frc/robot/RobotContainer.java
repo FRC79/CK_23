@@ -12,16 +12,15 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.conveyer_commands.DumpBalls;
-import frc.robot.commands.conveyer_commands.IntakeBalls;
-import frc.robot.commands.conveyer_commands.StopDump;
-import frc.robot.commands.conveyer_commands.StopIntake;
-import frc.robot.commands.wheel_of_fortune.ExtendWOF;
-import frc.robot.commands.wheel_of_fortune.RetractWOF;
-import frc.robot.commands.wheel_of_fortune.SpinWOF;
-import frc.robot.commands.wheel_of_fortune.WOFHoldOnColor;
+import frc.robot.commands.conveyer_commands.*;
+import frc.robot.commands.wheel_of_fortune.*;
+import frc.robot.commands.climb_commands.*;
+
 import frc.robot.subsystems.BallConveyer;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.WheelOfFortune;
 
@@ -39,6 +38,7 @@ public class RobotContainer {
 
   private final WheelOfFortune m_WheelOfFortune = new WheelOfFortune();
   private final BallConveyer m_BallConveyer = new BallConveyer();
+  private final Climb m_Climb = new Climb();
 
 
   SendableChooser<Command> m_chooser = new SendableChooser<>(); // allows the drivers to choose auto mode in driver station.
@@ -75,6 +75,16 @@ public class RobotContainer {
         .whenReleased(new StopDump(m_BallConveyer));
 
     // operatior buttons
+      // Climb buttons
+      new JoystickButton(operator, Constants.OIConstants.EXTEND_TELESCOPE) // extend telescope
+        .whenPressed(new StartTelescopeMotors(m_Climb));
+      new JoystickButton(operator, Constants.OIConstants.STOP_TELESCOPE) // stop extending telescope
+        .whenReleased(new StopTelescopeMotors(m_Climb));
+      new JoystickButton(operator, Constants.OIConstants.CLIMB_UP) // activate winch
+        .whenPressed(new StartWinchMotors(m_Climb));
+      new JoystickButton(operator, Constants.OIConstants.STOP_WINCH) // stop winch
+        .whenReleased(new StopWinchMotors(m_Climb));
+        
       // WOF
       new JoystickButton(operator, Constants.OIConstants.EXTEND_WOF) // extend
         .whenPressed(new ExtendWOF(m_WheelOfFortune));
