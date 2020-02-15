@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import com.revrobotics.ColorSensorV3.RawColor;
+import edu.wpi.first.wpilibj.util.Color;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -25,19 +25,19 @@ public final class Constants {
 		public static final int PISTONIN = 0; // piston for wof deployment 
     public static final int PISTONOUT = 1;
 
-    public static final RawColor RED = new RawColor(255, 0, 0, 0);
-    public static final RawColor GREEN = new RawColor(0, 255, 0, 0);
-    public static final RawColor BLUE = new RawColor(0, 255, 255, 0);
-    public static final RawColor YELLOW = new RawColor(255, 255, 0, 0);
+    public static final Color RED = new Color(0.5, 0.3, 0);
+    public static final Color GREEN = new Color(0, 1, 0);
+    public static final Color BLUE = new Color(0, 0, 1);
+    public static final Color YELLOW = new Color(0.3, 0.5, 0);
 
-    public static final RawColor[] wheelColors ={ // the colors on the WOF in order 
+    public static final Color[] wheelColors ={ // the colors on the WOF in order 
       RED, // red
       GREEN, // green
       BLUE, // blue
-      YELLOW // Yellow
+      YELLOW // yellow
     };
 
-	public static final double COLOR_THRESHOLD = 50; // how close the color sensor must be to a target color (TBD)
+	public static final double COLOR_THRESHOLD = 1.1; // how close the color sensor must be to a target color (TBD)
 
     }
 
@@ -70,38 +70,50 @@ public final class Constants {
 
     public static final class OIConstants {
 
-    // joysticks
-		public static final int DRIVER = 0;
-    public static final int OPERATOR = 1;
+      // joysticks
+      public static final int DRIVER = 0;
+      public static final int OPERATOR = 1;
 
-    
-    // driver buttons
-      // ball conveyer
-      public static final int INTAKE_ON = 0;
-      public static final int INTAKE_OFF = 0;
+      
+      // driver buttons
+        // ball conveyer
+        public static final int INTAKE_ON = 1;
+        public static final int INTAKE_OFF = 1;
 
-      public static final int DUMP_ON = 0;
-      public static final int DUMP_OFF = 0;
+        public static final int DUMP_ON = 2;
+        public static final int DUMP_OFF = 2;
 
-    // operatior buttons 
-      // WOF
-      public static final int EXTEND_WOF = 1; // push up
-      public static final int RETRACT_WOF = 2; // pull down
-      public static final int SPIN_WOF = 3; // spin 3 times
-      public static final int HOLD_WOF = 4; // hold on color
+      // operatior buttons 
+        // WOF
+        public static final int EXTEND_WOF = 1; // push up
+        public static final int RETRACT_WOF = 2; // pull down
+        public static final int SPIN_WOF = 3; // spin 3 times
+        public static final int HOLD_WOF = 4; // hold on color
 
 
     }
     public static final class ConveyerConstants{
 
-		public static final int INTAKE_LEFT = 0;
-    public static final int INTAKE_RIGHT = 0;
+      public static final int INTAKE_LEFT = 3;
+      public static final int INTAKE_RIGHT = 3;
+      
+      public static final int CLIP_LEFT = 3;
+      public static final int CLIP_RIGHT = 3;
+      
+      public static final int DUMP_LEFT = 3;
+      public static final int DUMP_RIGHT = 3;
+
+    }
+
+    public static final class ClimbConstants{
+
+		public static final int LEFT_TELESCOPE = 0; // left telescope motor
+    public static final int RIGHT_TELESCOPE = 0; // right telescope motor
     
-		public static final int CLIP_LEFT = 0;
-    public static final int CLIP_RIGHT = 0;
-    
-		public static final int DUMP_LEFT = 0;
-		public static final int DUMP_RIGHT = 0;
+		public static final int WINCH_1 = 0; // motor for the winch
+		public static final int WINCH_2 = 0; // 2nd winch motor
+
+
 
     }
 }
