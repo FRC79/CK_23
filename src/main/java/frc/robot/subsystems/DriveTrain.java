@@ -12,6 +12,7 @@ import frc.robot.commands.drive_commands.DefaultDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 
@@ -51,7 +52,63 @@ public class DriveTrain extends SubsystemBase {
   public DriveTrain() {
     // m_stick = m_RobotContainer.driver;
   }
-	 
+  //https://github.com/CrossTheRoadElec/Phoenix-Examples-Languages/blob/master/Java/VelocityClosedLoop/src/main/java/frc/robot/Robot.java 
+  private void SetUpEncoders(){
+    /* Factory Default all hardware to prevent unexpected behaviour */
+    frontLeftMotor.configFactoryDefault();
+
+    /* Config sensor used for Primary PID [Velocity] */
+    frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
+                                                Constants.DriveConstants.kPIDLoopIdx, 
+                                                Constants.DriveConstants.kTimeoutMs);
+
+    /**
+    * Phase sensor accordingly. 
+    * Positive Sensor Reading should match Green (blinking) Leds on Talon
+    */
+    frontLeftMotor.setSensorPhase(true);
+
+    /* Config the peak and nominal outputs */
+    frontLeftMotor.configNominalOutputForward(0, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.configNominalOutputReverse(0, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.configPeakOutputForward(1, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.configPeakOutputReverse(-1, Constants.DriveConstants.kTimeoutMs);
+
+    /* Config the Velocity closed loop gains in slot0 */
+    frontLeftMotor.config_kF(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kF, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.config_kP(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kP, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.config_kI(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kI, Constants.DriveConstants.kTimeoutMs);
+    frontLeftMotor.config_kD(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kD, Constants.DriveConstants.kTimeoutMs);
+
+
+
+    /* Factory Default all hardware to prevent unexpected behaviour */
+    frontRightMotor.configFactoryDefault();
+
+    /* Config sensor used for Primary PID [Velocity] */
+    frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
+                                                  Constants.DriveConstants.kPIDLoopIdx, 
+                                                  Constants.DriveConstants.kTimeoutMs);
+
+    /**
+     * Phase sensor accordingly. 
+     * Positive Sensor Reading should match Green (blinking) Leds on Talon
+     */
+    frontRightMotor.setSensorPhase(true);
+
+    /* Config the peak and nominal outputs */
+    frontRightMotor.configNominalOutputForward(0, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.configNominalOutputReverse(0, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.configPeakOutputForward(1, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.configPeakOutputReverse(-1, Constants.DriveConstants.kTimeoutMs);
+
+    /* Config the Velocity closed loop gains in slot0 */
+    frontRightMotor.config_kF(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kF, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.config_kP(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kP, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.config_kI(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kI, Constants.DriveConstants.kTimeoutMs);
+    frontRightMotor.config_kD(Constants.DriveConstants.kPIDLoopIdx, Constants.DriveConstants.kGains_Velocit.kD, Constants.DriveConstants.kTimeoutMs);
+  }
+
   // USS reads between 25cm - 765cm   
   // https://www.andymark.com/products/ultrasonic-proximity-sensor-ez-mb1013-maxbotix
   public double GetDistance() {
@@ -109,6 +166,7 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    System.out.println(frontLeftMotor.getSelectedSensorVelocity(Constants.DriveConstants.kPIDLoopIdx));
   }
 
 }
