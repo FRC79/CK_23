@@ -51,6 +51,7 @@ public class DriveTrain extends SubsystemBase {
    */
   public DriveTrain() {
     // m_stick = m_RobotContainer.driver;
+    SetUpEncoders();
   }
   //https://github.com/CrossTheRoadElec/Phoenix-Examples-Languages/blob/master/Java/VelocityClosedLoop/src/main/java/frc/robot/Robot.java 
   private void SetUpEncoders(){
