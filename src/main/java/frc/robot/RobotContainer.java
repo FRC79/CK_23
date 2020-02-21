@@ -16,12 +16,14 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.conveyer_commands.*;
+import frc.robot.commands.rgb_xd.WOF_ColorSync;
 import frc.robot.commands.wheel_of_fortune.*;
 import frc.robot.commands.climb_commands.*;
 
 import frc.robot.subsystems.BallConveyer;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.RGBWOOOOOOYEAHHH;
 import frc.robot.subsystems.WheelOfFortune;
 
 /**
@@ -39,6 +41,7 @@ public class RobotContainer {
   private final WheelOfFortune m_WheelOfFortune = new WheelOfFortune();
   private final BallConveyer m_BallConveyer = new BallConveyer();
   private final Climb m_Climb = new Climb();
+  private final RGBWOOOOOOYEAHHH m_rgb = new RGBWOOOOOOYEAHHH();
 
 
   SendableChooser<Command> m_chooser = new SendableChooser<>(); // allows the drivers to choose auto mode in driver station.
@@ -94,6 +97,11 @@ public class RobotContainer {
         .whenPressed(new SpinWOF(m_WheelOfFortune));
       new JoystickButton(operator, Constants.OIConstants.HOLD_WOF) // hold on color
         .whenPressed(new WOFHoldOnColor(m_WheelOfFortune));
+
+      new JoystickButton(operator, Constants.OIConstants.SPIN_WOF) // sync LEDs with color sensor (same button as spin 3 times)
+        .whenPressed(new WOF_ColorSync(m_rgb, m_WheelOfFortune));
+      new JoystickButton(operator, Constants.OIConstants.HOLD_WOF) // sync LEDs with color sensor (same button as hold wof)
+        .whenPressed(new WOF_ColorSync(m_rgb, m_WheelOfFortune));
   }
 
 

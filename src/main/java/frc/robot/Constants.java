@@ -25,10 +25,10 @@ public final class Constants {
 		public static final int PISTONIN = 0; // piston for wof deployment 
     public static final int PISTONOUT = 1;
 
-    public static final Color RED = new Color(0.5, 0.3, 0);
+    public static final Color RED = new Color(1, 0, 0);
     public static final Color GREEN = new Color(0, 1, 0);
     public static final Color BLUE = new Color(0, 0, 1);
-    public static final Color YELLOW = new Color(0.3, 0.5, 0);
+    public static final Color YELLOW = new Color(0.5, 0.5, 0);
 
     public static final Color[] wheelColors ={ // the colors on the WOF in order 
       RED, // red
@@ -124,24 +124,34 @@ public final class Constants {
     }
     public static final class ConveyerConstants{
 
-      public static final int INTAKE_LEFT = 3;
-      public static final int INTAKE_RIGHT = 3;
+      public static final int INTAKE_LEFT = 5;
+      public static final int INTAKE_RIGHT = 5;
       
-      public static final int CLIP_LEFT = 3;
-      public static final int CLIP_RIGHT = 3;
+      public static final int CLIP_LEFT = 6;
+      public static final int CLIP_RIGHT = 6;
       
-      public static final int DUMP_LEFT = 3;
-      public static final int DUMP_RIGHT = 3;
+      public static final int DUMP_LEFT = 7;
+      public static final int DUMP_RIGHT = 7;
 
     }
 
     public static final class ClimbConstants{
 
-		public static final int LEFT_TELESCOPE = 0; // left telescope motor
-    public static final int RIGHT_TELESCOPE = 0; // right telescope motor
+		public static final int LEFT_TELESCOPE = 8; // left telescope motor
+    public static final int RIGHT_TELESCOPE = 9; // right telescope motor
     
-		public static final int WINCH_1 = 0; // motor for the winch
-		public static final int WINCH_2 = 0; // 2nd winch motor
+		public static final int WINCH_1 = 10; // motor for the winch
+		public static final int WINCH_2 = 11; // 2nd winch motor
 
+    }
+
+    public static final class RGBConstants{
+
+      // color components for the super cool rgb lights
+		public static final int RED_LED = 0;
+		public static final int BLUE_LED = 1;
+		public static final int GREEN_LED = 2;
+
+      
     }
 }

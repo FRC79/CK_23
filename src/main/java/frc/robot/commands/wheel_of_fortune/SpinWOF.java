@@ -31,7 +31,7 @@ public class SpinWOF extends CommandBase {
   }
 
   public void colorChange(){// count the number of times we switch TO yellow.
-    Color blue = Constants.WOFConstants.BLUE; // 
+    Color blue = Constants.WOFConstants.BLUE; // it's all a lie, it's not blue at all
 
     m_dash.putNumber("aprob red", sensorColor.red);
     m_dash.putNumber("aprob green", sensorColor.green);
