@@ -59,7 +59,7 @@ public final class Constants {
     
     // math garbage
     public static final double ENCODER_COUNT_PER_ROTATION = 360; // number of pulses per full rotation 
-    public static final int WHEEL_DIAMETER = 6; // size of the wheels 
+    public static final double WHEEL_DIAMETER = 0.1524; // size of the wheels in m
 
     // ultrasonic sensors
      public static final int USS_PORT = 0; // 0 needs to be changed
