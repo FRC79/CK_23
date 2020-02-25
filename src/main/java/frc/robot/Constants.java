@@ -63,10 +63,17 @@ public final class Constants {
 
     // ultrasonic sensors
      public static final int USS_PORT = 0; // 0 needs to be changed
-
-    // drive distance 
-	  public static final double TIMEOUT_SPEED_THRESHOLD = 0; // speed in m/s that we should consider stopped
-	public static final long TIMEOUT_TIME_THRESHOLD = 0;
+     public static final int GOAL_USS_PORT = 0; // 0 needs to be changed
+     // This should be from the ultrasonic sensor to the goal(centimeters).
+     public static final int WALL_USS_PORT = 0; // 0 needs to be changed
+     // This should be from the ultrasonic sensor to the front of the robot (centimeters).
+     public static final int GOAL_OFFSET_USS = 0; // 0 needs to be changed
+     // This offset should be from the front of the ultrasonic sensor to the front of the robot(centimeters).
+     public static final int WALL_OFFSET_USS = 0; // 0 needs to be changed
+     public static final double AT_GOAL_TOLERANCE = 10; //measurement in cm
+     // drive distance 
+	   public static final double TIMEOUT_SPEED_THRESHOLD = 0; // speed in m/s that we should consider stopped
+	   public static final long TIMEOUT_TIME_THRESHOLD = 0;
     }
 
     public static final class OIConstants {

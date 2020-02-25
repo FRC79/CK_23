@@ -29,8 +29,9 @@ public class DriveTrain extends SubsystemBase {
   private final TalonSRX backRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR2_PORT);
 
   // ultrasonic sensors
-  private final AnalogInput m_US = new AnalogInput(DriveConstants.USS_PORT);
-	
+  private final AnalogInput m_GOAL_USS = new AnalogInput(DriveConstants.GOAL_USS_PORT);
+	private final AnalogInput m_WALL_USS = new AnalogInput(DriveConstants.WALL_USS_PORT);
+
   // encoders
 
   private SmartDashboard m_number;
@@ -77,18 +78,38 @@ public class DriveTrain extends SubsystemBase {
 	 
   // USS reads between 30cm - 765cm   
   // https://www.andymark.com/products/ultrasonic-proximity-sensor-ez-mb1013-maxbotix
-  public double GetUssDistance() {
-    double sensorValue = m_US.getVoltage();
+  public double GetGoalUssDistance() {
+    double sensorValue = m_GOAL_USS.getVoltage();
     final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
     double distance = 5*sensorValue*scaleFactor; //convert the voltage to distance
-    return distance; 
+    return distance - DriveConstants.GOAL_OFFSET_USS; 
   }
+
+  public double GetWallUssDistance() {
+    double sensorValue = m_WALL_USS.getVoltage();
+    final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
+    double distance = 5*sensorValue*scaleFactor; //convert the voltage to distance
+    return distance - DriveConstants.WALL_OFFSET_USS; 
+  }
+
+  public boolean IsRobotAtGoal(){
+    double wallDistance = GetWallUssDistance();
+    double goalDistance = GetGoalUssDistance();
+    double disagreement = goalDistance - wallDistance; // this is the disagreement between the goal USS and wall USS
+    if (disagreement >= DriveConstants.AT_GOAL_TOLERANCE) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 
   public double calcStopingSpeed(){
     // // find velocity 
     double vel = 5; // in m/s
     // // find distance 
-    double dist = GetUssDistance();
+    double dist = GetWallUssDistance();
     m_number.putNumber("ultrasonic", dist);
     // // calculate time till impact
     double timeTillImpact = dist/vel;
