@@ -66,6 +66,13 @@ public final class Constants {
 
     // ultrasonic sensors
      public static final int USS_PORT = 0; // 0 needs to be changed
+     public static final int GOAL_USS_PORT = 0; // 0 needs to be changed
+     // This should be from the ultrasonic sensor to the goal(centimeters).
+     public static final int WALL_USS_PORT = 0; // 0 needs to be changed
+     // This should be from the ultrasonic sensor to the front of the robot (centimeters).
+     public static final int GOAL_OFFSET_USS = 0; // 0 needs to be changed
+     // This offset should be from the front of the ultrasonic sensor to the front of the robot(centimeters).
+     public static final int WALL_OFFSET_USS = 0; // 0 needs to be changed
     }
 
     public static final class OIConstants {
