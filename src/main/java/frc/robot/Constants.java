@@ -63,6 +63,10 @@ public final class Constants {
 
     // ultrasonic sensors
      public static final int USS_PORT = 0; // 0 needs to be changed
+
+    // drive distance 
+	  public static final double TIMEOUT_SPEED_THRESHOLD = 0; // speed in m/s that we should consider stopped
+	public static final long TIMEOUT_TIME_THRESHOLD = 0;
     }
 
     public static final class OIConstants {
