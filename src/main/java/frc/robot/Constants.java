@@ -73,6 +73,8 @@ public final class Constants {
      public static final int GOAL_OFFSET_USS = 0; // 0 needs to be changed
      // This offset should be from the front of the ultrasonic sensor to the front of the robot(centimeters).
      public static final int WALL_OFFSET_USS = 0; // 0 needs to be changed
+     public static final double AT_GOAL_TOLERANCE = 10; //measurement in cm
+     
     }
 
     public static final class OIConstants {

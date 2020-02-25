@@ -69,6 +69,17 @@ public class DriveTrain extends SubsystemBase {
     return distance - DriveConstants.WALL_OFFSET_USS; 
   }
 
+  public boolean IsRobotAtGoal(){
+    double wallDistance = GetWallUssDistance();
+    double goalDistance = GetGoalUssDistance();
+    double disagreement = goalDistance - wallDistance; // this is the disagreement between the goal USS and wall USS
+    if (disagreement >= DriveConstants.AT_GOAL_TOLERANCE) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
 
   public double calcStopingSpeed(){
