@@ -51,18 +51,15 @@ public final class Constants {
     public static final int RIGHT_MOTOR2_PORT = 4;
 
     // encoders
-    public static final int[] LEFT_ENCODERS = new int[]{0, 1};
-    public static final int[] RIGHT_ENCODERS = new int[]{2, 3};
+    public static final int LEFT_ENCODERS = 1; // ports
+    public static final int RIGHT_ENCODERS = 2;
 
-    public static final boolean LEFT_ENCODERS_REVERSE = false;
+    public static final boolean LEFT_ENCODERS_REVERSE = false; // is reversed
     public static final boolean RIGHT_ENCODERS_REVERSE = true;
     
     // math garbage
     public static final double ENCODER_COUNT_PER_ROTATION = 360; // number of pulses per full rotation 
-    public static final int WHEEL_DIAMETER = 6; // size of the wheels 
-    public static final double kEncoderDistancePerPulse =
-    // Assumes the encoders are directly mounted on the wheel shafts
-    (WHEEL_DIAMETER * Math.PI) / (double) ENCODER_COUNT_PER_ROTATION;
+    public static final double WHEEL_DIAMETER = 0.1524; // size of the wheels in m
 
     // ultrasonic sensors
      public static final int USS_PORT = 0; // 0 needs to be changed
@@ -74,7 +71,9 @@ public final class Constants {
      // This offset should be from the front of the ultrasonic sensor to the front of the robot(centimeters).
      public static final int WALL_OFFSET_USS = 0; // 0 needs to be changed
      public static final double AT_GOAL_TOLERANCE = 10; //measurement in cm
-     
+     // drive distance 
+	   public static final double TIMEOUT_SPEED_THRESHOLD = 0; // speed in m/s that we should consider stopped
+	   public static final long TIMEOUT_TIME_THRESHOLD = 0;
     }
 
     public static final class OIConstants {
@@ -127,6 +126,16 @@ public final class Constants {
     
 		public static final int WINCH_1 = 0; // motor for the winch
 		public static final int WINCH_2 = 0; // 2nd winch motor
+
+    }
+
+    public static final class RGBConstants{
+
+		public static final int RED_LED = 0;
+		public static final int BLUE_LED = 0;
+		public static final int GREEN_LED = 0;
+
+
 
     }
 }
