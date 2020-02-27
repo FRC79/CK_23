@@ -80,7 +80,7 @@ public class DriveTrain extends SubsystemBase {
   public double GetUssDistance() {
     double sensorValue = m_US.getVoltage();
     final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
-    double distance = 5*sensorValue*scaleFactor; //convert the voltage to distance
+    double distance = (5/4)*sensorValue*scaleFactor; //convert the voltage to distance
     return distance; 
   }
 

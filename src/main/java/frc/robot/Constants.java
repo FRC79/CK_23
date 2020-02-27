@@ -114,11 +114,11 @@ public final class Constants {
 
     public static final class ClimbConstants{
 
-		public static final int LEFT_TELESCOPE = 0; // left telescope motor
-    public static final int RIGHT_TELESCOPE = 0; // right telescope motor
+		public static final int LEFT_TELESCOPE = 4; // left telescope motor
+    public static final int RIGHT_TELESCOPE = 5; // right telescope motor
     
-		public static final int WINCH_1 = 0; // motor for the winch
-		public static final int WINCH_2 = 0; // 2nd winch motor
+		public static final int WINCH_1 = 6; // motor for the winch
+		public static final int WINCH_2 = 7; // 2nd winch motor
 
     }
 
