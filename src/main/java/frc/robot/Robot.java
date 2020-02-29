@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.RGBWOOOOOOYEAHHH;
 import frc.robot.commands.drive_commands.DefaultDrive;
 
 /**
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  //private RGBWOOOOOOYEAHHH m_rgb = new RGBWOOOOOOYEAHHH();
 
   private final DriveTrain m_DriveTrain = new DriveTrain();
   private Command m_defaultDrive;

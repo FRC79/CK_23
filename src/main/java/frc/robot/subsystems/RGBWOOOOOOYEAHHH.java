@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants.RGBConstants;
 
@@ -18,6 +19,7 @@ public class RGBWOOOOOOYEAHHH extends SubsystemBase {
   public PWM blueLED;
   public PWM greenLED;
 
+  private SmartDashboard m_dash;
   /**
    * Creates a new RGBWOOOOOOYEAHHH.
    */
@@ -25,7 +27,6 @@ public class RGBWOOOOOOYEAHHH extends SubsystemBase {
     redLED = new PWM(RGBConstants.RED_LED);
     blueLED = new PWM(RGBConstants.BLUE_LED);
     greenLED = new PWM(RGBConstants.GREEN_LED);
-
   }
 
   // private double IntToPWN(int input){
@@ -44,11 +45,14 @@ public class RGBWOOOOOOYEAHHH extends SubsystemBase {
    * @param blue  green component 0-1
    */
 
-  public void SetRGBColor(Double red, Double green, Double blue){
-    redLED.setPosition(red);
-    greenLED.setPosition(green);
-    blueLED.setPosition(blue);
+  public void SetRGBColor(int red, int green, int blue){
+    redLED.setRaw(Math.abs(red*255));
+    greenLED.setRaw(Math.abs(green*255));
+    blueLED.setRaw(Math.abs(blue*255));
 
+    m_dash.putNumber("red", redLED.getRaw());
+    m_dash.putNumber("green", greenLED.getRaw());
+    m_dash.putNumber("blue", blueLED.getRaw());
   }
 
   @Override

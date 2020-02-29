@@ -125,8 +125,8 @@ public final class Constants {
     public static final class RGBConstants{
 
 		public static final int RED_LED = 0;
-		public static final int BLUE_LED = 0;
-		public static final int GREEN_LED = 0;
+		public static final int BLUE_LED = 1;
+		public static final int GREEN_LED = 2;
 
 
 

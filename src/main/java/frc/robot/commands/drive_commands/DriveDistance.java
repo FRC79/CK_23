@@ -9,12 +9,10 @@ package frc.robot.commands.drive_commands;
 import frc.robot.Constants.DriveConstants;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveDistance extends CommandBase {
   private final DriveTrain m_DriveTrain;
-  private final RobotContainer m_RobotContainer;
 
   private final double leftDistToTravel;
   private final double rightDistToTravel;
@@ -33,13 +31,12 @@ public class DriveDistance extends CommandBase {
   /**
    * Creates a new DriveDistance.
    */
-  public DriveDistance(DriveTrain subsystem, RobotContainer roboContainer, double leftDistance, double rightDistance, double speed) {
+  public DriveDistance(DriveTrain subsystem, double leftDistance, double rightDistance, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     leftDistToTravel = leftDistance;
     rightDistToTravel = rightDistance;
     m_speed = speed;
 
-    m_RobotContainer = roboContainer;
     m_DriveTrain = subsystem;
     addRequirements(m_DriveTrain);
 
@@ -100,7 +97,7 @@ public class DriveDistance extends CommandBase {
       hasStarted = true;
     }
 
-    if(hasStarted){  
+    if(hasStarted){  // has started when we're over the speed threshold
       if(leftTime == null & leftWheelStopped & !leftFinished){
         leftTime = curtime;
       }

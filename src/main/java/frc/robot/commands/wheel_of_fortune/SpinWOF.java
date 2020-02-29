@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.WheelOfFortune;
+import frc.robot.subsystems.RGBWOOOOOOYEAHHH;
 
 public class SpinWOF extends CommandBase {
   
@@ -19,6 +20,7 @@ public class SpinWOF extends CommandBase {
   private Color sensorColor;
   private int rotations;
   private SmartDashboard m_dash;
+  private RGBWOOOOOOYEAHHH m_rgb;
   private Boolean temp;
 
 
@@ -33,10 +35,10 @@ public class SpinWOF extends CommandBase {
   public void colorChange(){// count the number of times we switch TO yellow.
     Color blue = Constants.WOFConstants.BLUE; // 
 
-    m_dash.putNumber("aprob red", sensorColor.red);
-    m_dash.putNumber("aprob green", sensorColor.green);
-    m_dash.putNumber("aprob blue", sensorColor.blue);
-    m_dash.putNumber("color diff", WOFHelpers.aproximateColor(blue, sensorColor));
+    // m_dash.putNumber("aprob red", sensorColor.red);
+    // m_dash.putNumber("aprob green", sensorColor.green);
+    // m_dash.putNumber("aprob blue", sensorColor.blue);
+    // m_dash.putNumber("color diff", WOFHelpers.aproximateColor(blue, sensorColor));
     
 
     boolean isBlue = WOFHelpers.aproximateColor(blue, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD; // if the color sensor is close to pure yellow
@@ -56,9 +58,11 @@ public class SpinWOF extends CommandBase {
   /**
    * Creates a new SpinWOF.
    */
-  public SpinWOF(WheelOfFortune subsystem) {
+  public SpinWOF(WheelOfFortune subsystem, RGBWOOOOOOYEAHHH rbgLights) {
+    m_rgb = rbgLights;
     m_WheelOfFortune = subsystem;
     addRequirements(m_WheelOfFortune);
+    addRequirements(m_rgb);
   }
 
 
@@ -67,12 +71,15 @@ public class SpinWOF extends CommandBase {
   public void execute() {
     sensorColor = m_WheelOfFortune.colorSensor.getColor(); // to set this to the output of the sensor
     colorChange();
+    //m_rgb.SetRGBColor(sensorColor.red, sensorColor.blue, sensorColor.green);
+    m_rgb.SetRGBColor(1, 0, 0);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_WheelOfFortune.WOFmotor.set(0);// turn off the WOF motor
+    m_rgb.SetRGBColor(0, 0, 0);
   }
 
   // Returns true when the command should end.
