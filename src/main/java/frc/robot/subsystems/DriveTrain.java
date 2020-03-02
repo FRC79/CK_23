@@ -12,24 +12,29 @@ import frc.robot.Constants.DriveConstants;
 
 import edu.wpi.first.wpilibj.AnalogInput; // for USS
 
-import edu.wpi.first.wpilibj.Joystick; // for testing collision avoidence stuff
+//import edu.wpi.first.wpilibj.Joystick; // for testing collision avoidence stuff
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 public class DriveTrain extends SubsystemBase {
 // The motors on the left side of the drive.
   private final TalonSRX frontLeftMotor = new TalonSRX(DriveConstants.LEFT_MOTOR1_PORT);
-  private final TalonSRX backLeftMotor = new TalonSRX(DriveConstants.LEFT_MOTOR2_PORT);
+  private final VictorSPX backLeftMotor = new VictorSPX(DriveConstants.LEFT_MOTOR2_PORT);
 
   // The motors on the right side of the drive.
   private final TalonSRX frontRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR1_PORT);
-  private final TalonSRX backRightMotor = new TalonSRX(DriveConstants.RIGHT_MOTOR2_PORT);
+  private final VictorSPX backRightMotor = new VictorSPX(DriveConstants.RIGHT_MOTOR2_PORT);
 
   // ultrasonic sensors
-  private final AnalogInput m_US = new AnalogInput(DriveConstants.USS_PORT);
+  private final AnalogInput m_US_WALL = new AnalogInput(DriveConstants.USS_WALL);
+  private final AnalogInput m_US_HOLE = new AnalogInput(DriveConstants.USS_HOLE);
+
+   private double[] wallArray = new double[20]; // list of uss distances over a short period of time
+   private double[] holeArray = new double[20];
 	
   // encoders
 
@@ -77,19 +82,69 @@ public class DriveTrain extends SubsystemBase {
 	 
   // USS reads between 30cm - 765cm   
   // https://www.andymark.com/products/ultrasonic-proximity-sensor-ez-mb1013-maxbotix
-  public double GetUssDistance() {
-    double sensorValue = m_US.getVoltage();
+  public double getUssDistanceWALL() {
+    double sensorValue = m_US_WALL.getVoltage();
+    final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
+    double distance = (5/4)*sensorValue*scaleFactor; //convert the voltage to distance
+    return distance; 
+  }
+  public double getUssDistanceHOLE() {
+    double sensorValue = m_US_HOLE.getVoltage();
     final double scaleFactor = 1/(5./1024.); //scale converting voltage to distance
     double distance = (5/4)*sensorValue*scaleFactor; //convert the voltage to distance
     return distance; 
   }
 
+  // public static int[] addX(int n, int arr[], double x) 
+  // { 
+  //     int i; 
+
+  //     // create a new array of size n+1 
+  //     int newarr[] = new int[n + 1]; 
+
+  //     // insert the elements from 
+  //     // the old array into the new array 
+  //     // insert all elements till n 
+  //     // then insert x at n+1 
+  //     for (i = 0; i < n; i++) 
+  //         newarr[i] = arr[i]; 
+
+  //     newarr[n] = x; 
+
+  //     return newarr; 
+  // } 
+
+  /**
+   * called to shift every element down by 1,
+   * calling this function will erase the data in element 0,
+   * the final element will be left alone, it should be overided later
+   * 
+   * @param arr the array you want to shift
+   * 
+   * @return the shifted array
+   */
+  private int[] shiftArray(int[] arr){ // like a ziplock bag ;))))
+    int i;
+    for(i = 0; i>arr.length-1; i++){
+      arr[i] = arr[i+1];
+    }
+    return arr;
+  }
+
+  // private double smoothUSSHOLE(){
+  //   // shift the array
+  //   holeArray = shiftArray(holeArray);
+  //   // set the last element to current reading
+  //   holeArray = addX(19, holeArray, getUssDistanceHOLE());
+  //   // return 
+  //   return -1.0;
+  // }
   public double calcStopingSpeed(){
     // // find velocity 
     double vel = 5; // in m/s
     // // find distance 
-    double dist = GetUssDistance();
-    m_number.putNumber("ultrasonic", dist);
+    double dist = getUssDistanceWALL();
+    m_number.putNumber("ultrasonic", dist); // drain bramage
     // // calculate time till impact
     double timeTillImpact = dist/vel;
     // // use time to determine new safe speed
@@ -99,7 +154,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void arcadeDrive(double fwd, double rot) {
-    /* Gamepad processing */
+    /* Gamepad processing */ // game
 
     double stopingSpeed = calcStopingSpeed();
     //System.out.print(stopingSpeed/260+"      ");
