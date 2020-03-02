@@ -26,7 +26,8 @@ public class DumpBalls extends CommandBase {
   @Override
   public void initialize() {
     m_BallConveyer.setIntakeMotors(1);
-    m_BallConveyer.setClipMotors(1);
+    m_BallConveyer.setClipLowMotor(1);
+    m_BallConveyer.setClipHighMotor(1);
     m_BallConveyer.setDumpMotors(1);
   }
 
@@ -39,7 +40,8 @@ public class DumpBalls extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_BallConveyer.setIntakeMotors(0);
-    m_BallConveyer.setClipMotors(0);
+    m_BallConveyer.setClipLowMotor(0);
+    m_BallConveyer.setClipHighMotor(0);
     m_BallConveyer.setDumpMotors(0);
   }
 

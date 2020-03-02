@@ -26,7 +26,8 @@ public class IntakeBalls extends CommandBase {
   @Override
   public void initialize() {
     m_BallConveyer.setIntakeMotors(1); // change these to suit ball jamming
-    m_BallConveyer.setClipMotors(0.5);
+    m_BallConveyer.setClipLowMotor(0.2);
+    m_BallConveyer.setClipHighMotor(0.2);
     m_BallConveyer.setDumpMotors(0);
   }
 
@@ -39,7 +40,8 @@ public class IntakeBalls extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_BallConveyer.setIntakeMotors(0);
-    m_BallConveyer.setClipMotors(0);
+    m_BallConveyer.setClipLowMotor(0);
+    m_BallConveyer.setClipHighMotor(0);
     m_BallConveyer.setDumpMotors(0);
   }
 

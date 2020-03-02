@@ -26,7 +26,8 @@ public class StopDump extends CommandBase {
   @Override
   public void initialize() {
     m_BallConveyer.setIntakeMotors(0);
-    m_BallConveyer.setClipMotors(0);
+    m_BallConveyer.setClipLowMotor(0);
+    m_BallConveyer.setClipHighMotor(0);
     m_BallConveyer.setDumpMotors(0);
   }
 
