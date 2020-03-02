@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.util.Color;
 public final class Constants {
     public static final class WOFConstants {
 
-    public static final int WOFMOTOR = 16; // WOF motor (victor)
+    public static final int WOFMOTOR = 0; // WOF motor (victor)
     
 		public static final int PISTONIN = 0; // piston for wof deployment 
     public static final int PISTONOUT = 1;
@@ -45,9 +45,9 @@ public final class Constants {
 
     // motors
 		public static final int LEFT_MOTOR1_PORT = 1; // currently set up for protobot ports 
-    public static final int LEFT_MOTOR2_PORT = 3;
+    public static final int LEFT_MOTOR2_PORT = 2;
     
-		public static final int RIGHT_MOTOR1_PORT = 2;
+		public static final int RIGHT_MOTOR1_PORT = 3;
     public static final int RIGHT_MOTOR2_PORT = 4;
 
     // encoders
@@ -62,11 +62,13 @@ public final class Constants {
     public static final double WHEEL_DIAMETER = 0.1524; // size of the wheels in m
 
     // ultrasonic sensors
-     public static final int USS_PORT = 0; // 0 needs to be changed
+    public static final int USS_WALL = 0; // at the level of the wall
+    public static final int USS_HOLE = 1; // at the level of the low goal
 
     // drive distance 
 	  public static final double TIMEOUT_SPEED_THRESHOLD = 0; // speed in m/s that we should consider stopped
-	public static final long TIMEOUT_TIME_THRESHOLD = 0;
+	    public static final long TIMEOUT_TIME_THRESHOLD = 0;
+
     }
 
     public static final class OIConstants {
@@ -101,24 +103,22 @@ public final class Constants {
     }
     public static final class ConveyerConstants{
 
-      public static final int INTAKE_LEFT = 3;
-      public static final int INTAKE_RIGHT = 3;
+		public static final int INTAKE = 5;
+		public static final int CLIP_LOW = 6;
+		public static final int CLIP_HIGH = 7;
+		public static final int DUMP = 8;
+
       
-      public static final int CLIP_LEFT = 3;
-      public static final int CLIP_RIGHT = 3;
-      
-      public static final int DUMP_LEFT = 3;
-      public static final int DUMP_RIGHT = 3;
 
     }
 
     public static final class ClimbConstants{
 
-		public static final int LEFT_TELESCOPE = 4; // left telescope motor
-    public static final int RIGHT_TELESCOPE = 5; // right telescope motor
+		public static final int LEFT_TELESCOPE = 9; // left telescope motor
+    public static final int RIGHT_TELESCOPE = 10; // right telescope motor
     
-		public static final int WINCH_1 = 6; // motor for the winch
-		public static final int WINCH_2 = 7; // 2nd winch motor
+		public static final int WINCH_1 = 11; // motor for the winch
+		public static final int WINCH_2 = 12; // 2nd winch motor
 
     }
 
