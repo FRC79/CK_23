@@ -36,7 +36,6 @@ public class Climb extends SubsystemBase {
     winchVictor1.set(speed);
     winchVictor2.set(-speed);
   }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
