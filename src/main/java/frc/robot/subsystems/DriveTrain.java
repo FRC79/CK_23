@@ -50,34 +50,34 @@ public class DriveTrain extends SubsystemBase {
   public DriveTrain() {
     // m_stick = m_RobotContainer.driver;
     // config encoders
-    frontLeftMotor.configFactoryDefault();
-    frontRightMotor.configFactoryDefault();
+    // frontLeftMotor.configFactoryDefault();
+    // frontRightMotor.configFactoryDefault();
 
-    // set encoders to relative
-    frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-    frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    // // set encoders to relative
+    // frontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
+    // frontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
   }
 
-  /** 
-   * @return returns the velocity in m/s
-   */
-  public double getLeftEncoderVelocity(){
-    int rawVelocity = frontLeftMotor.getSelectedSensorVelocity(); // encoder units per 100 ms
-    int rawVelPerSecond = rawVelocity*10;
-    double rotationsPerSecond = rawVelPerSecond/4096d;
-    double velocity = rotationsPerSecond*DriveConstants.WHEEL_DIAMETER*Math.PI;
-    return velocity;
-  }
-  /** 
-   * @return returns the velocity in m/s
-   */
-  public double getRightEncoderVelocity(){
-    int rawVelocity = frontRightMotor.getSelectedSensorVelocity(); // encoder units per 100 ms
-    int rawVelPerSecond = rawVelocity*10;
-    double rotationsPerSecond = rawVelPerSecond/4096d;
-    double velocity = rotationsPerSecond*DriveConstants.WHEEL_DIAMETER*Math.PI;
-    return velocity;
-  }
+  // /** 
+  //  * @return returns the velocity in m/s
+  //  */
+  // public double getLeftEncoderVelocity(){
+  //   int rawVelocity = frontLeftMotor.getSelectedSensorVelocity(); // encoder units per 100 ms
+  //   int rawVelPerSecond = rawVelocity*10;
+  //   double rotationsPerSecond = rawVelPerSecond/4096d;
+  //   double velocity = rotationsPerSecond*DriveConstants.WHEEL_DIAMETER*Math.PI;
+  //   return velocity;
+  // }
+  // /** 
+  //  * @return returns the velocity in m/s
+  //  */
+  // public double getRightEncoderVelocity(){
+  //   int rawVelocity = frontRightMotor.getSelectedSensorVelocity(); // encoder units per 100 ms
+  //   int rawVelPerSecond = rawVelocity*10;
+  //   double rotationsPerSecond = rawVelPerSecond/4096d;
+  //   double velocity = rotationsPerSecond*DriveConstants.WHEEL_DIAMETER*Math.PI;
+  //   return velocity;
+  // }
 
 	 
   // USS reads between 30cm - 765cm   
@@ -172,17 +172,17 @@ public class DriveTrain extends SubsystemBase {
     backRightMotor.set(ControlMode.PercentOutput, -minSpeed, DemandType.ArbitraryFeedForward, turn);
   }
 
-  public void leftDrive(double speed){
-    double fwd = Deadband(speed);
-    frontLeftMotor.set(ControlMode.PercentOutput, fwd);
-    backLeftMotor.set(ControlMode.PercentOutput, fwd);
-  }
+  // public void leftDrive(double speed){
+  //   double fwd = Deadband(speed);
+  //   frontLeftMotor.set(ControlMode.PercentOutput, fwd);
+  //   backLeftMotor.set(ControlMode.PercentOutput, fwd);
+  // }
 
-  public void rightDrive(double speed){
-    double fwd = Deadband(speed);
-    frontRightMotor.set(ControlMode.PercentOutput, fwd);
-    backRightMotor.set(ControlMode.PercentOutput, fwd);
-  }
+  // public void rightDrive(double speed){
+  //   double fwd = Deadband(speed);
+  //   frontRightMotor.set(ControlMode.PercentOutput, fwd);
+  //   backRightMotor.set(ControlMode.PercentOutput, fwd);
+  // }
 
   double Deadband(double value) {
 		/* Upper deadband */
@@ -206,12 +206,12 @@ public class DriveTrain extends SubsystemBase {
     // This method will be called once per scheduler run
 
     // add small steps of distance to the total
-    long timeDifference = lastTime - System.currentTimeMillis();
-    double advjVelocityLeft = getLeftEncoderVelocity();
-    double advjVelocityRight = getRightEncoderVelocity();
-    totalDistanceLeft+=timeDifference*advjVelocityLeft;
-    totalDistanceRight+=timeDifference*advjVelocityRight;
-    lastTime = System.currentTimeMillis();
+    // long timeDifference = lastTime - System.currentTimeMillis();
+    // double advjVelocityLeft = getLeftEncoderVelocity();
+    // double advjVelocityRight = getRightEncoderVelocity();
+    // totalDistanceLeft+=timeDifference*advjVelocityLeft;
+    // totalDistanceRight+=timeDifference*advjVelocityRight;
+    // lastTime = System.currentTimeMillis();
   }
 
   public void clearDistance(){
