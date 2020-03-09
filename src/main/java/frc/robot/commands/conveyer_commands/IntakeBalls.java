@@ -7,12 +7,14 @@
 
 package frc.robot.commands.conveyer_commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.BallConveyer;
 
 public class IntakeBalls extends CommandBase {
   private final BallConveyer m_BallConveyer;
+  private SmartDashboard m_dash;
   /**
    * Creates a new DumpBalls.
    */
@@ -25,15 +27,15 @@ public class IntakeBalls extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_BallConveyer.setIntakeMotors(1); // change these to suit ball jamming
-    m_BallConveyer.setClipLowMotor(0.2);
-    m_BallConveyer.setClipHighMotor(0.2);
-    m_BallConveyer.setDumpMotors(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_BallConveyer.setIntakeMotors(1.0); // change these to suit ball jamming
+    m_BallConveyer.setClipLowMotor(0.8);
+    m_BallConveyer.setClipHighMotor(0.8);
+    m_BallConveyer.setDumpMotors(0);
   }
 
   // Called once the command ends or is interrupted.

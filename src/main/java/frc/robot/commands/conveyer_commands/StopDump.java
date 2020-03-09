@@ -25,15 +25,15 @@ public class StopDump extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_BallConveyer.setIntakeMotors(0);
-    m_BallConveyer.setClipLowMotor(0);
-    m_BallConveyer.setClipHighMotor(0);
-    m_BallConveyer.setDumpMotors(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_BallConveyer.setIntakeMotors(0);
+    m_BallConveyer.setClipLowMotor(0);
+    m_BallConveyer.setClipHighMotor(0);
+    m_BallConveyer.setDumpMotors(0);
   }
 
   // Called once the command ends or is interrupted.
