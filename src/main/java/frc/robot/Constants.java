@@ -5,6 +5,89 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+
+/*
+...............................................................................
+
+........................................................--.....................
+
+.......................................................=WWWW@=:................
+
+....................................................:@WWWWWWWWWWWW@*-..........
+
+..................................................=WWWWWWWWWWWWWWWWWWWWW#+-....
+
+...............................................+@WWWWWWWWWWWWWWWWWWWWWWWWW@....
+
+............................................:@WWWWWWWWWWWWWWWWWWWWWWWWWWW#.....
+
+.........................................-#WWWWWWWWWWWWWWWWWWWWWWWWWWWWW*......
+
+......................................-#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW=.......
+
+...................................:#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW:.......
+
+...............................:#@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW........
+
+............................:@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#........
+
+......................-+=#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW+........
+
+..................+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@.........
+
+...............-#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW:.........
+
+.............*WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW+..........
+
+..........:@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW+...........
+
+........:@WWWWWWWW@WWWWWWWWWWWWWWWWWWWWWW*.....:#WWWWWWWWWWWWWWWWW+............
+
+.....-=WWWWWWW*-+WWWWWWWWWWWWWWWWWWWWWWW-..........+WWWWWWWWWWWWW=.............
+
+.....@WWWW@*-.:@WWWWWWWWWWWWWWWWWWWWWW#.............-WWWWWWWWWWW@..............
+
+......-.....-#WWWWWWWWWWWWWWWWWWWWWWWWW-.............#WWWWWWWWWW:..............
+
+...........*WWWWWWWWWWWWWWWWWWWWWWWWWWW:.............@WWWWWWWWW#...............
+
+.........:@WWWWWWW@+-WWWWWWWWWWWWWWWWWW-............+WWWWWWWWWW+...............
+
+........#WWWWWWW#-..@WWWWWWWWWWWWWWWWW=............-WWWWWWWWWW@................
+
+......-@WWWWWW@-...#WWWWWWWWWWWWWWWWWWWWW*.........@WWWWWWWWWW*................
+
+.....+WWWWWWW:....*WWWWWWWW+.:@WWWWWWWWWWWW:......+WWWWWWWWWWW-................
+
+...-@WWWWWW*.....:WWWWWWW@-.....-=WWWWWWWWWWW#:...#WWWWWWWWWW:.................
+
+...=WWWWW=......-WWWWWWW#..........-=WWWWWWWWWWW*-WWWWWWWWW@-..................
+
+....-::........-@WWWWWW#...............+WWWWWWWWWWWWWWWWWW*....................
+
+...............@WWWWWW#...................:=@WWWWWWWWWWWW:.....................
+
+..............=WWWWWW#........................-#WWWWWWW#.......................
+
+..............#WWWWW@-............................-#W@:........................
+
+.............+WWWWWW:..........................................................
+
+............-WWWWWW+...........................................................
+
+............+WWW@+.............................................................
+
+
+   _____           _           _                    
+  / ____|         | |         ( )                   
+ | |  __    ___   | |_        |/    ___   _ __ ___  
+ | | |_ |  / _ \  | __|            / _ \ | '_ ` _ \ 
+ | |__| | | (_) | | |_            |  __/ | | | | | |
+  \_____|  \___/   \__|            \___| |_| |_| |_|
+                                                    
+                                    
+*/
+
 package frc.robot;
 
 import edu.wpi.first.wpilibj.util.Color;
@@ -20,10 +103,10 @@ import edu.wpi.first.wpilibj.util.Color;
 public final class Constants {
     public static final class WOFConstants {
 
-    public static final int WOFMOTOR = 0; // WOF motor (victor)
+    public static final int WOFMOTOR = 3; // WOF motor (victor)
     
-		public static final int PISTONIN = 0; // piston for wof deployment 
-    public static final int PISTONOUT = 1;
+		public static final int PISTONIN = 1; // piston for wof deployment 
+    public static final int PISTONOUT = 0;
 
     public static final Color RED = new Color(0.5, 0.3, 0);
     public static final Color GREEN = new Color(0, 1, 0);
@@ -44,11 +127,12 @@ public final class Constants {
     public static final class DriveConstants {
 
     // motors
-		public static final int LEFT_MOTOR1_PORT = 1; // currently set up for protobot ports 
-    public static final int LEFT_MOTOR2_PORT = 2;
+    // currently set up for CK23 ports 
+		public static final int LEFT_MOTOR1_PORT = 7; // victor
+    public static final int LEFT_MOTOR2_PORT = 1; // talon
     
-		public static final int RIGHT_MOTOR1_PORT = 3;
-    public static final int RIGHT_MOTOR2_PORT = 4;
+		public static final int RIGHT_MOTOR1_PORT = 13; // talon
+    public static final int RIGHT_MOTOR2_PORT = 8; // victor
 
     // encoders
     public static final int LEFT_ENCODERS = 1; // ports
@@ -80,10 +164,10 @@ public final class Constants {
       
       // driver buttons
         // ball conveyer
-        public static final int INTAKE_ON = 1;
+        public static final int INTAKE_ON = 1; // should be the same button
         public static final int INTAKE_OFF = 1;
 
-        public static final int DUMP_ON = 2;
+        public static final int DUMP_ON = 2; // should be the same button
         public static final int DUMP_OFF = 2;
 
       // operatior buttons 
@@ -103,10 +187,10 @@ public final class Constants {
     }
     public static final class ConveyerConstants{
 
-		public static final int INTAKE = 5;
-		public static final int CLIP_LOW = 6;
-		public static final int CLIP_HIGH = 7;
-		public static final int DUMP = 8;
+		public static final int INTAKE = 6;
+		public static final int CLIP_LOW = 9;
+		public static final int CLIP_HIGH = 12;
+		public static final int DUMP = 11;
 
       
 
@@ -114,11 +198,11 @@ public final class Constants {
 
     public static final class ClimbConstants{
 
-		public static final int LEFT_TELESCOPE = 9; // left telescope motor
-    public static final int RIGHT_TELESCOPE = 10; // right telescope motor
+		public static final int LEFT_TELESCOPE = 19; // left telescope motor
+    public static final int RIGHT_TELESCOPE = 18; // right telescope motor
     
-		public static final int WINCH_1 = 11; // motor for the winch
-		public static final int WINCH_2 = 12; // 2nd winch motor
+		public static final int WINCH_1 = 2; // motor for the winch
+		public static final int WINCH_2 = 10; // 2nd winch motor
 
     }
 
