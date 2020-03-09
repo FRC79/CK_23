@@ -40,7 +40,7 @@ public class RobotContainer {
   private final WheelOfFortune m_WheelOfFortune = new WheelOfFortune();
   private final BallConveyer m_BallConveyer = new BallConveyer();
   private final Climb m_Climb = new Climb();
-  private final RGBWOOOOOOYEAHHH m_rgb = new RGBWOOOOOOYEAHHH();
+  //private final RGBWOOOOOOYEAHHH m_rgb = new RGBWOOOOOOYEAHHH();
 
 
   SendableChooser<Command> m_chooser = new SendableChooser<>(); // allows the drivers to choose auto mode in driver station.
@@ -93,7 +93,7 @@ public class RobotContainer {
       new JoystickButton(operator, Constants.OIConstants.RETRACT_WOF) // retract
         .whenPressed(new RetractWOF(m_WheelOfFortune));
       new JoystickButton(operator, Constants.OIConstants.SPIN_WOF) // spin 3 times
-        .whenPressed(new SpinWOF(m_WheelOfFortune, m_rgb));
+        .whenPressed(new SpinWOF(m_WheelOfFortune));
       new JoystickButton(operator, Constants.OIConstants.HOLD_WOF) // hold on color
         .whenPressed(new WOFHoldOnColor(m_WheelOfFortune));
   }
