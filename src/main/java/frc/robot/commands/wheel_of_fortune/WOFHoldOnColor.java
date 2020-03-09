@@ -7,6 +7,8 @@
 
 package frc.robot.commands.wheel_of_fortune;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -79,18 +81,13 @@ public class WOFHoldOnColor extends CommandBase {
     Color sensorColor = m_WheelOfFortune.colorSensor.getColor(); // to set this to the output of the sensor
 
     isOnRightColor = WOFHelpers.aproximateColor(rightSensorColor, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD;
-    if(isOnRightColor){
-      m_WheelOfFortune.WOFmotor.set(0); // turn the WOF motor off
-    }else{
-      m_WheelOfFortune.WOFmotor.set(0.25); // set WOF motor to 25% speed
-    }
-    
+      m_WheelOfFortune.WOFmotor.set(ControlMode.PercentOutput, 0.25); // set WOF motor to 25% speed    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_WheelOfFortune.WOFmotor.set(0); // turn the WOF motor off
+    m_WheelOfFortune.WOFmotor.set(ControlMode.PercentOutput, 0); // turn the WOF motor off
   }
 
   // Returns true when the command should end.

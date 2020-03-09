@@ -22,9 +22,14 @@ public class RetractWOF extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_WheelOfFortune.retract();
   }
 
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+      m_WheelOfFortune.retract();
+    }
+  
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

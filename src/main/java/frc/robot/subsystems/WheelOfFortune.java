@@ -11,16 +11,17 @@ import frc.robot.Constants.WOFConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.Victor;
 
 public class WheelOfFortune extends SubsystemBase {
   // piston or soulinoid here
   public DoubleSolenoid WOFPiston;
   // motor(victor)
-  public Victor WOFmotor;
+  public VictorSPX WOFmotor;
   // color sensor
   public I2C.Port i2cPort;
   public ColorSensorV3 colorSensor; 
@@ -28,7 +29,7 @@ public class WheelOfFortune extends SubsystemBase {
 
   public WheelOfFortune(){
     WOFPiston = new DoubleSolenoid(WOFConstants.PISTONOUT, WOFConstants.PISTONIN);
-    WOFmotor = new Victor(WOFConstants.WOFMOTOR);
+    WOFmotor = new VictorSPX(WOFConstants.WOFMOTOR);
     i2cPort =  I2C.Port.kOnboard;
     colorSensor = new ColorSensorV3(i2cPort);
   }

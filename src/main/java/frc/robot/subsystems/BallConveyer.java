@@ -7,29 +7,31 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.ConveyerConstants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class BallConveyer extends SubsystemBase {
+  private SmartDashboard m_dash;
   // intake talons
-  private final TalonSRX intakeMotor = new TalonSRX(ConveyerConstants.INTAKE);
-  //private final TalonSRX intakeRightMotor = new TalonSRX(ConveyerConstants.INTAKE_RIGHT);
+  private VictorSPX intakeMotor = new VictorSPX(ConveyerConstants.INTAKE);
   // ball clip talons
-  private final TalonSRX clipLowMotor = new TalonSRX(ConveyerConstants.CLIP_LOW);
-  private final TalonSRX clipHighMotor = new TalonSRX(ConveyerConstants.CLIP_HIGH);
+  private final VictorSPX clipLowMotor = new VictorSPX(ConveyerConstants.CLIP_LOW);
+  private final VictorSPX clipHighMotor = new VictorSPX(ConveyerConstants.CLIP_HIGH);
   // ball dump talons
-  private final TalonSRX dumpMotor = new TalonSRX(ConveyerConstants.DUMP);
-  //private final TalonSRX dumpRightMotor = new TalonSRX(ConveyerConstants.DUMP_RIGHT);
+  private final VictorSPX dumpMotor = new VictorSPX(ConveyerConstants.DUMP);
 
   /**
    * Creates a new BallConveyer.
    */
   public BallConveyer() {
-
+    
   }
 
   public void setIntakeMotors(double speed){
