@@ -8,6 +8,7 @@
 package frc.robot.commands.wheel_of_fortune;
 
 import edu.wpi.first.wpilibj.util.Color;
+import frc.robot.Constants.WOFConstants;
 /**
  * Add your docs here.
  */
@@ -22,4 +23,42 @@ public class WOFHelpers {
     return distS2;
   }
 
+  public enum WOFColors{
+    YELLOW("Y"),
+    GREEN("G"),
+    BLUE("B"),
+    RED("R");
+    private final String WOFString;
+
+    private WOFColors(String WOFString){
+      this.WOFString = WOFString;
+    }
+  }
+
+  public static WOFColors guessColor(Color color){
+
+
+    double distRed = aproximateColor(color, WOFConstants.RED);
+    double distBlue = aproximateColor(color, WOFConstants.BLUE);
+    double distGreen = aproximateColor(color, WOFConstants.GREEN);
+    double distYellow = aproximateColor(color, WOFConstants.YELLOW);
+
+    WOFColors guess = WOFColors.RED;
+    double guessDist = distRed;
+
+    if(distBlue < guessDist){
+      guess = WOFColors.BLUE;
+      guessDist = distBlue;
+    }
+    if(distGreen < guessDist){
+      guess = WOFColors.GREEN;
+      guessDist = distGreen;
+    }
+    if(distYellow < guessDist){
+      guess = WOFColors.YELLOW;
+      guessDist = distYellow;
+    }
+
+    return guess;
+  }
 }

@@ -91,6 +91,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.util.Color;
+import frc.robot.commands.wheel_of_fortune.WOFHelpers.WOFColors;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -113,14 +114,16 @@ public final class Constants {
     public static final Color BLUE = new Color(0, 0, 1);
     public static final Color YELLOW = new Color(0.3, 0.5, 0);
 
-    public static final Color[] wheelColors ={ // the colors on the WOF in order 
-      RED, // red
-      GREEN, // green
-      BLUE, // blue
-      YELLOW // yellow
+    public static final WOFColors[] wheelColors ={ // the colors on the WOF in order 
+      WOFColors.RED, // red
+      WOFColors.GREEN, // green
+      WOFColors.BLUE, // blue
+      WOFColors.YELLOW // yellow
     };
 
 	public static final double COLOR_THRESHOLD = 1.1; // how close the color sensor must be to a target color (TBD)
+
+	public static final int PCM = 16;
 
     }
 

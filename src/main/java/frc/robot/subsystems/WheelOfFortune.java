@@ -28,7 +28,7 @@ public class WheelOfFortune extends SubsystemBase {
 
 
   public WheelOfFortune(){
-    WOFPiston = new DoubleSolenoid(WOFConstants.PISTONOUT, WOFConstants.PISTONIN);
+    WOFPiston = new DoubleSolenoid(WOFConstants.PCM, WOFConstants.PISTONOUT, WOFConstants.PISTONIN);
     WOFmotor = new VictorSPX(WOFConstants.WOFMOTOR);
     i2cPort =  I2C.Port.kOnboard;
     colorSensor = new ColorSensorV3(i2cPort);

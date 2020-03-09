@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.commands.wheel_of_fortune.WOFHelpers.WOFColors;
 import frc.robot.subsystems.WheelOfFortune;
 
 public class WOFHoldOnColor extends CommandBase {
@@ -77,11 +78,11 @@ public class WOFHoldOnColor extends CommandBase {
       // do nothing
       return;
     }
-    Color rightSensorColor = Constants.WOFConstants.wheelColors[colorIndex];
+    WOFColors rightSensorColor = Constants.WOFConstants.wheelColors[colorIndex];
     Color sensorColor = m_WheelOfFortune.colorSensor.getColor(); // to set this to the output of the sensor
 
-    isOnRightColor = WOFHelpers.aproximateColor(rightSensorColor, sensorColor) < Constants.WOFConstants.COLOR_THRESHOLD;
-      m_WheelOfFortune.WOFmotor.set(ControlMode.PercentOutput, 0.25); // set WOF motor to 25% speed    
+    isOnRightColor = WOFHelpers.guessColor(sensorColor) == rightSensorColor;
+      m_WheelOfFortune.WOFmotor.set(ControlMode.PercentOutput, 1); // set WOF motor to 100% speed    
   }
 
   // Called once the command ends or is interrupted.
