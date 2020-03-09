@@ -181,11 +181,7 @@ public final class Constants {
         public static final int HOLD_WOF = 4; // hold on color
 
         // climb 
-        public static final int EXTEND_TELESCOPE = 5; // send the telescopes up
-        public static final int STOP_TELESCOPE = 5; // stop the telescopes
-        public static final int CLIMB_UP = 7; // start the winch
-        public static final int STOP_WINCH = 7; // stop the winch
-
+        public static final int MOVE_TELESCOPE = 5; // send the telescopes up
 
     }
     public static final class ConveyerConstants{
@@ -201,8 +197,7 @@ public final class Constants {
 
     public static final class ClimbConstants{
 
-		public static final int LEFT_TELESCOPE = 19; // left telescope motor
-    public static final int RIGHT_TELESCOPE = 18; // right telescope motor
+		public static final int TELESCOPE = 19; // left telescope motor
     
 		public static final int WINCH_1 = 2; // motor for the winch
 		public static final int WINCH_2 = 10; // 2nd winch motor

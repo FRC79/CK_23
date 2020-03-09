@@ -47,7 +47,7 @@ public class RobotContainer {
 
   // joysticks
   public Joystick driver = new Joystick(Constants.OIConstants.DRIVER);
-  public Joystick operator = new Joystick(Constants.OIConstants.OPERATOR);
+  public GenericHID operator = new Joystick(Constants.OIConstants.OPERATOR);
 
 
   /**
@@ -77,15 +77,9 @@ public class RobotContainer {
         .whenReleased(new StopDump(m_BallConveyer));
 
     // operatior buttons
-      // Climb buttons
-      new JoystickButton(operator, Constants.OIConstants.EXTEND_TELESCOPE) // extend telescope
-        .whenPressed(new StartTelescopeMotors(m_Climb));
-      new JoystickButton(operator, Constants.OIConstants.STOP_TELESCOPE) // stop extending telescope
-        .whenReleased(new StopTelescopeMotors(m_Climb));
-      new JoystickButton(operator, Constants.OIConstants.CLIMB_UP) // activate winch
-        .whenPressed(new StartWinchMotors(m_Climb));
-      new JoystickButton(operator, Constants.OIConstants.STOP_WINCH) // stop winch
-        .whenReleased(new StopWinchMotors(m_Climb));
+      //Climb buttons
+      new JoystickButton(operator, Constants.OIConstants.MOVE_TELESCOPE) // move telescope
+        .whileHeld(new MoveTelescope(m_Climb));
         
       // WOF
       new JoystickButton(operator, Constants.OIConstants.EXTEND_WOF) // extend

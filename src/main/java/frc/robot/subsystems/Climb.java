@@ -14,8 +14,7 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Climb extends SubsystemBase {
   // motors for extending telescopes
-  private final Victor leftTelescopeMotor = new Victor(ClimbConstants.LEFT_TELESCOPE);
-  private final Victor rightTelescopeMotor = new Victor(ClimbConstants.RIGHT_TELESCOPE);
+  private final Victor telescopeMotor = new Victor(ClimbConstants.TELESCOPE);
 
   // motors that are part of the winch
   private final Victor winchVictor1 = new Victor(ClimbConstants.WINCH_1);
@@ -27,9 +26,8 @@ public class Climb extends SubsystemBase {
 
   }
 
-  public void SetTelescopeMotors(double speed){
-    leftTelescopeMotor.set(speed);
-    rightTelescopeMotor.set(speed);
+  public void SetTelescopeMotor(double speed){
+    telescopeMotor.set(speed);
   }
 
   public void SetWinchMotors(double speed){
